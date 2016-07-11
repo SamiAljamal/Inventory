@@ -127,17 +127,21 @@ namespace Inventory
         return (idEquality && descriptionEquality && nameEquality);
       }
     }
-    public static Thing Find(int id)
+    public override int GetHashCode()
+    {
+         return this.GetName().GetHashCode();
+    }
+    public static Thing Find(string name)
     {
       SqlConnection conn = DB.Connection();
       SqlDataReader rdr = null;
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("SELECT * FROM inventory WHERE id = @ThingID;", conn);
-      SqlParameter thingIdParameter = new SqlParameter();
-      thingIdParameter.ParameterName = "@ThingId";
-      thingIdParameter.Value = id.ToString();
-      cmd.Parameters.Add(thingIdParameter);
+      SqlCommand cmd = new SqlCommand("SELECT * FROM inventory WHERE name = @ThingName;", conn);
+      SqlParameter thingNameParameter = new SqlParameter();
+      thingNameParameter.ParameterName = "@ThingName";
+      thingNameParameter.Value = name;
+      cmd.Parameters.Add(thingNameParameter);
       rdr = cmd.ExecuteReader();
 
       int foundThingId = 0;

@@ -62,7 +62,7 @@ namespace Inventory
       testThing.Save();
 
       //Act
-      Thing foundThing = Thing.Find(testThing.GetId());
+      Thing foundThing = Thing.Find(testThing.GetName());
 
       //Assert
       Assert.Equal(testThing, foundThing);

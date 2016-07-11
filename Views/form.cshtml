@@ -1,0 +1,18 @@
+<h1>Inventory!</h1>
+
+<h3>Enter your Inventory.</h3>
+
+<form  action="/inventory/created" method="post">
+  <label for="name"> Enter Inventory name.</label>
+  <input type="text" name="name" required>
+  <br>
+  <label for="descrip"> Enter description.</label>
+  <input type="text" name="descrip" required>
+  <br>
+  <button type="submit" name="button">submit</button>
+</form>
+<form action="/search/results" method="post">
+  <label for="searched-name"> Search for a Category</label>
+  <input type="text" name="searched-name">
+  <button type="submit" name="search">Or Search In Your database</button>
+</form>
